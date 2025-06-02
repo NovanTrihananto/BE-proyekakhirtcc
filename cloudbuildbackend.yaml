@@ -1,17 +1,17 @@
 substitutions:
-  _ENV: gs://proyekakhir/.env
+  _ENV: gs://tccakhir/.env
 steps:
   - name: "gcr.io/cloud-builders/gsutil"
     args: ["cp", "${_ENV}", ".env"]
   # Membuat image dengan perintah "cloud build -t gcr.io/$PROJECT_ID/tcc-be ."
   # Project ID akan secara otomatis terisi ketika melakukan deploy di project yg dipilih
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/proyekakhir202060", "."]
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/proyekakhir", "."]
 
   # Meng-upload/push image yg telah dibuat ke Artifact Registry
   # Pada bagian ini, dijalankan perintah "docker push 'gcr.io/$PROJECT_ID/tcc-be'"
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/proyekakhir202060"]
+    args: ["push", "gcr.io/$PROJECT_ID/proyekakhir"]
 
   # Melakukan deploy ke cloud run menggunakan image yg telah di-upload/push pada langkah sebelumnya
   # Pada bagian ini, dijalankan perintah sebagai berikut.
@@ -34,9 +34,9 @@ steps:
       [
         "run",
         "deploy",
-        "proyekakhir202060",
+        "proyekakhir",
         "--image",
-        "gcr.io/$PROJECT_ID/proyekakhir202060",
+        "gcr.io/$PROJECT_ID/proyekakhir",
         "--timeout",
         "1000s",
         "--region",
