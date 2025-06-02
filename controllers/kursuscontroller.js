@@ -53,12 +53,6 @@ export const createKursus = async (req, res) => {
         blobStream.on("finish", resolve);
         blobStream.end(req.file.buffer);
       });
-
-      // Buat file jadi public
-      await blob.makePublic();
-
-      // Buat URL publik file
-      imageUrl = format(`${process.env.GCS_PUBLIC_URL}/${bucket.name}/${fileName}`);
     }
 
     // Simpan ke database
