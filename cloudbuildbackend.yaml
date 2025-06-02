@@ -39,8 +39,6 @@ steps:
         "gcr.io/$PROJECT_ID/proyekakhir202060",
         "--timeout",
         "1000s",
-        "--port",
-        "5000",
         "--region",
         "us-central1",
         "--allow-unauthenticated",
