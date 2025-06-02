@@ -13,7 +13,7 @@ app.set("view engine", "ejs");
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:3000", // <- Diganti sama alamat front-end
+    origin: "https://proyekakhir202-060-700231807331.us-central1.run.app", // <- Diganti sama alamat front-end
     credentials: true,
   })
 );
